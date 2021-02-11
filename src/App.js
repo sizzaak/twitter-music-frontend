@@ -18,7 +18,7 @@ function App() {
         <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
 
         <datalist id="ice-cream-flavors">
-          <option value="GameStop"></option>
+          <option value="GameStop (Test)"></option>
           <option value="#ThankYouAaron"></option>
           <option value="5dogs"></option>
           <option value="Lonzo"></option>
