@@ -11,7 +11,7 @@ function App() {
           Twitter Emotion Music
         </p>
         <ReactAudioPlayer
-          src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"
+          src="http://18.188.150.96:8000/liq.ogg"
           controls
         />
         <label for="ice-cream-choice">Which trend do you want to listen to?</label>
