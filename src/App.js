@@ -2,6 +2,7 @@ import React from 'react'
 import twitter_logo from './twitter_logo.svg'
 import './App.css';
 import ReactAudioPlayer from 'react-audio-player';
+import Poll from 'react-polls';
 //import background from "./funky_colors_bg.png";
 
 class App extends React.Component {
@@ -11,10 +12,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/tweet-analysis/trends.json')
-    /*fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits', {mode: 'no-cors'})*/
+    /*fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/tweet-analysis/trends.json')*/
+    fetch('/trend_counts.json')
       .then(response => response.json())
-      .then(data => this.setState({trends: data}));
+      .then(data => {
+        console.log(data);
+        this.setState({trends: data})
+      });
     console.log("yo");
     //this.setState({trends : ["trendA", "trendB", "trendC", "trendD", "trendE"]});
   }
@@ -35,6 +39,9 @@ class App extends React.Component {
             /*src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"*/
             controls
           />
+          <div>
+            <Poll question={"Which?"} answers={[{option: "one", votes: 3}, {option: "two", votes: 7}]} onVote={() => {console.log("voted!")}} noStorage={true} />
+          </div>
           <div className="trends">{this.state.trends}</div>
           <p>
             <a className="App-button" href="https://docs.google.com/document/d/1qih2wQpwlKFNCUW1N6w4xqkPPoUdU9reQ7R2FZN28QA/edit">Learn more about our project here</a>
