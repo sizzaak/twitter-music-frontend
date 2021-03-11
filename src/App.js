@@ -8,19 +8,16 @@ import Poll from 'react-polls';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { trends: ["trend1", "trend2", "trend3", "trend4", "trend5"]};
+    this.state = { trends: []};
   }
 
   componentDidMount() {
-    /*fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/tweet-analysis/trends.json')*/
-    fetch('/trend_counts.json')
+    fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trend_counts.json')
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        this.setState({trends: data})
+        this.setState({trends: data});
       });
-    console.log("yo");
-    //this.setState({trends : ["trendA", "trendB", "trendC", "trendD", "trendE"]});
   }
 
   render() {
@@ -35,14 +32,21 @@ class App extends React.Component {
             <img src={twitter_logo} className="App-logo" alt="logo" />
           </p>
           <ReactAudioPlayer
-            src="http://18.188.150.96:8000/liq.ogg"
+            src="https://icecast.cs.washington.edu/liq.ogg"
             /*src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"*/
             controls
           />
           <div>
-            <Poll question={"Which?"} answers={[{option: "one", votes: 3}, {option: "two", votes: 7}]} onVote={() => {console.log("voted!")}} noStorage={true} />
+            <Poll 
+	      question={"Which trend would you like to listen to?"} 
+	      answers={this.state.trends} 
+	      onVote={voteAnswer => {
+	        console.log("voted for " + voteAnswer);
+	        fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trends.cgi?trend=' + voteAnswer, {method: 'GET'});
+	      }} 
+	      noStorage={true} 
+	    />
           </div>
-          <div className="trends">{this.state.trends}</div>
           <p>
             <a className="App-button" href="https://docs.google.com/document/d/1qih2wQpwlKFNCUW1N6w4xqkPPoUdU9reQ7R2FZN28QA/edit">Learn more about our project here</a>
           </p>
