@@ -5,6 +5,28 @@ import ReactAudioPlayer from 'react-audio-player';
 import Poll from 'react-polls';
 //import background from "./funky_colors_bg.png";
 
+
+class NowPlaying extends React.Component {
+  render() {
+    let maxVoteCount = 0;
+    let maxVoteTrends = [];
+    this.props.trends.forEach(trend => {
+      if (trend.votes > maxVoteCount) {
+        maxVoteCount = trend.votes;
+        maxVoteTrends = [trend.option];
+      } else if (trend.votes === maxVoteCount) {
+        maxVoteTrends.push(trend.option);
+      }
+    })
+    let playing = "Now Playing: " + maxVoteTrends[0];
+    for (let i = 1; i < maxVoteTrends.length; i++) {
+      playing += " + " + maxVoteTrends[i];
+    }
+    return playing;
+  }
+}
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -46,20 +68,23 @@ class App extends React.Component {
           <p>
             <img src={twitter_logo} className="App-logo" alt="logo" />
           </p>
+          <NowPlaying trends={this.state.trends}/>
+          <p>
           <ReactAudioPlayer
             src="https://icecast.cs.washington.edu/liq.mp3"
             /*src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"*/
             controls
           />
+          </p>
           <div>
-            <Poll 
-	      question={"Which trend would you like to listen to?"} 
-	      answers={this.state.trends} 
+            <Poll
+	      question={"Which trend would you like to listen to?"}
+	      answers={this.state.trends}
 	      onVote={voteAnswer => {
 	        console.log("voted for " + voteAnswer);
 	        fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trends.cgi?trend=' + voteAnswer, {method: 'GET'});
-	      }} 
-	      noStorage={false} 
+	      }}
+	      noStorage={false}
 	    />
           </div>
           <p>
