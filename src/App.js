@@ -32,6 +32,10 @@ class App extends React.Component {
     super(props);
     this.state = { trends: [{option: 'trend1', votes: 5}, {option: 'trend2', votes: 5}, {option: 'trend3', votes: 5}, {option: 'trend4', votes: 5}, {option: 'trend5', votes: 5}]};
     this.state.oldtrends = this.state.trends;
+    const interval = setInterval(() => {
+      this.checkTrends();
+      console.log("checking...");
+    }, 2000);
   }
 
   checkTrends = () => {
@@ -46,15 +50,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.checkTrends();
-  }
-
-  componentDidUpdate() {
-    if (this.state.oldtrends !== this.state.trends) {
-      console.log(this.state.oldtrends);
-      console.log(this.state.trends);
-      this.setState({oldtrends: this.state.trends});
-      this.checkTrends();
-    }
   }
 
   render() {
