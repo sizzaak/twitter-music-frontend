@@ -81,8 +81,8 @@ class App extends React.Component {
 	      question={"Which trend would you like to listen to?"}
 	      answers={this.state.trends}
 	      onVote={voteAnswer => {
-	        console.log("voted for " + voteAnswer);
-	        fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trends.cgi?trend=' + voteAnswer, {method: 'GET'});
+	        console.log("voted for " + encodeURIComponent(voteAnswer));
+	        fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trends.cgi?trend=' + encodeURIComponent(voteAnswer), {method: 'GET'});
 	      }}
 	      noStorage={false}
 	    />
