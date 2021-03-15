@@ -8,16 +8,31 @@ import Poll from 'react-polls';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { trends: []};
+    this.state = { trends: [{option: 'trend1', votes: 5}, {option: 'trend2', votes: 5}, {option: 'trend3', votes: 5}, {option: 'trend4', votes: 5}, {option: 'trend5', votes: 5}]};
+    this.state.oldtrends = this.state.trends;
   }
 
-  componentDidMount() {
+  checkTrends = () => {
     fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trend_counts.json')
       .then(response => response.json())
       .then(data => {
         console.log(data);
         this.setState({trends: data});
       });
+    this.setState({trends: this.state.trends});
+  }
+
+  componentDidMount() {
+    this.checkTrends();
+  }
+
+  componentDidUpdate() {
+    if (this.state.oldtrends !== this.state.trends) {
+      console.log(this.state.oldtrends);
+      console.log(this.state.trends);
+      this.setState({oldtrends: this.state.trends});
+      this.checkTrends();
+    }
   }
 
   render() {
@@ -32,7 +47,7 @@ class App extends React.Component {
             <img src={twitter_logo} className="App-logo" alt="logo" />
           </p>
           <ReactAudioPlayer
-            src="https://icecast.cs.washington.edu/liq.ogg"
+            src="https://icecast.cs.washington.edu/liq.mp3"
             /*src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"*/
             controls
           />
@@ -44,7 +59,7 @@ class App extends React.Component {
 	        console.log("voted for " + voteAnswer);
 	        fetch('https://courses.cs.washington.edu/courses/cse481i/21wi/Project/trends.cgi?trend=' + voteAnswer, {method: 'GET'});
 	      }} 
-	      noStorage={true} 
+	      noStorage={false} 
 	    />
           </div>
           <p>
