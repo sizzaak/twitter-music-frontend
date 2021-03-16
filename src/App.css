@@ -16,8 +16,8 @@
 */
 
 .App-header {
-  background-image: url("https://s3-alpha-sig.figma.com/img/9c5f/af8b/14e3863b6ebcc2f84b2aaeac58251d76?Expires=1615766400&Signature=UgzrTvj4FlI073X7xley~Z0j2UWB0RgXZC6-R~VQYFEbJ~34AB7BbmNYAxLwV-0MsOfoJK3Sg2TPFdheuQFM~M4mW8NOBiy3fTrE~612KPvQGZ7h8b4MXHdBagKeeWA4Tf3aiJOuQHr1RW9oaQnEaGk6k4c6vSlhibMc4JyIrwW4Bx4uFLouCRObV8fzy4fCgOoynFS5VQamntGLpxcAGO4tAREguRmdoQcQIq6obSP2VsQfQa7waEko1tmfaovIHjY9XqiMPrKm1Fd5gpICckDhpb9e9jfJJ-38rxY9QoHp9X4EMkn6xnCX766uYDnhch9vEAODV-w3oMnY0ALvQQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
-  background-color: #282c34;
+  background-image: url("funky_colors_bg.jpg");
+  background-color: #000c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
