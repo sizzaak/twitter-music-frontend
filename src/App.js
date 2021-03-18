@@ -34,6 +34,7 @@ class App extends React.Component {
     this.state.oldtrends = this.state.trends;
     const interval = setInterval(() => {
       this.checkTrends();
+      this.checkTrends();
       console.log("checking...");
     }, 2000);
   }
@@ -49,6 +50,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.checkTrends();
+    this.checkTrends();
     this.checkTrends();
   }
 
@@ -67,8 +70,8 @@ class App extends React.Component {
           <p>
           <ReactAudioPlayer
             src="https://icecast.cs.washington.edu/liq.mp3"
-            /*src="https://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4"*/
-            controls
+	    controls={true}
+            autoPlay={true}
           />
           </p>
           <div>
@@ -83,7 +86,7 @@ class App extends React.Component {
 	    />
           </div>
           <p>
-            <a className="App-button" href="https://docs.google.com/document/d/1qih2wQpwlKFNCUW1N6w4xqkPPoUdU9reQ7R2FZN28QA/edit">Learn more about our project here</a>
+            <a className="App-button" href="https://docs.google.com/document/d/1lxBTVjwKGsaX3eB8Gh6K_unCW6hhVuo7vKZ-V0uiC8Y">Learn more about our project here</a>
           </p>
         </header>
       </div>

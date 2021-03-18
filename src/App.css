@@ -16,8 +16,9 @@
 */
 
 .App-header {
-  background-image: url("funky_colors_bg.jpg");
+  background-image: url("https://i.pinimg.com/564x/6c/7e/22/6c7e22cf30a5326424131c34438f6d2d.jpg");
   background-color: #000c34;
+  background-size: 100% 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
