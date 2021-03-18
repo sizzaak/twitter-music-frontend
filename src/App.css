@@ -40,6 +40,11 @@
   font-size: 16px;
 }
 
+.App-cse-logo {
+  width: 180px;
+  height: 20px;
+}
+
 .App-link {
   color: #61dafb;
 }

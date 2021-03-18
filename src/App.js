@@ -1,5 +1,6 @@
 import React from 'react'
 import twitter_logo from './twitter_logo.svg'
+import cse_logo from './cse-logo.png'
 import './App.css';
 import ReactAudioPlayer from 'react-audio-player';
 import Poll from 'react-polls';
@@ -70,7 +71,7 @@ class App extends React.Component {
           <p>
           <ReactAudioPlayer
             src="https://icecast.cs.washington.edu/liq.mp3"
-	    controls={true}
+	          controls={true}
             autoPlay={true}
           />
           </p>
@@ -88,7 +89,11 @@ class App extends React.Component {
           <p>
             <a className="App-button" href="https://docs.google.com/document/d/1lxBTVjwKGsaX3eB8Gh6K_unCW6hhVuo7vKZ-V0uiC8Y">Learn more about our project here</a>
           </p>
+          <p>
+          <img src={cse_logo} className="App-cse-logo" />
+          </p>
         </header>
+
       </div>
     );
   }
